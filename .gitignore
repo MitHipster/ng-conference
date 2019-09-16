@@ -41,3 +41,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Ignoring because of 'fatal: the remote end hung up unexpectedly' error when pushing
+package-lock.json
