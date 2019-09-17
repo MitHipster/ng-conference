@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'events-app',
   template: `
-    <H1>Hello World!</H1>
-    <img src="/assets/images/basic-shield.png" />
+    <events-list></events-list>
   `
 })
 export class EventsAppComponent {
