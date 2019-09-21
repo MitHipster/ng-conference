@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail.component';
+import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnail.component';
 
 @NgModule({
   imports: [BrowserModule],
