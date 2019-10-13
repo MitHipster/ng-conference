@@ -27,7 +27,22 @@ import { EventRouteActivatorGuard } from './events/event-detail/event-route-acti
     EventCreateComponent,
     PageNotFoundComponent
   ],
-  providers: [EventService, ToastrService, EventRouteActivatorGuard],
+  providers: [
+    // EventService is shorthand for { provide: EventService, useValue: EventService }
+    EventService,
+    ToastrService,
+    EventRouteActivatorGuard,
+    // The first parameter passed into canDeactivateCreateEvent is the component itself
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+  ],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule {}
+
+export function checkDirtyState(component: EventCreateComponent) {
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event. Do you wish to continue?');
+  }
+
+  return true;
+}

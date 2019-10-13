@@ -9,7 +9,11 @@ import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.co
 import { EventRouteActivatorGuard } from './events/event-detail/event-route-activator.guard';
 
 const routes: Routes = [
-  { path: 'events/new', component: EventCreateComponent },
+  {
+    path: 'events/new',
+    component: EventCreateComponent,
+    canDeactivate: ['canDeactivateCreateEvent']
+  },
   { path: 'events', component: EventsListComponent },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorGuard] },
   { path: 'page-not-found', component: PageNotFoundComponent },
