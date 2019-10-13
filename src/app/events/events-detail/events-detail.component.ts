@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/event.service';
 
 @Component({
-  selector: 'app-events-detail',
+  selector: 'events-detail',
   templateUrl: './events-detail.component.html',
   styleUrls: ['./events-detail.component.scss']
 })
