@@ -4,11 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../shared/event.service';
 
 @Component({
-  selector: 'events-detail',
-  templateUrl: './events-detail.component.html',
-  styleUrls: ['./events-detail.component.scss']
+  selector: 'event-detail',
+  templateUrl: './event-detail.component.html',
+  styleUrls: ['./event-detail.component.scss']
 })
-export class EventsDetailComponent implements OnInit {
+export class EventDetailComponent implements OnInit {
   event: any;
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
