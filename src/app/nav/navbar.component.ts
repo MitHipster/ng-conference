@@ -11,6 +11,9 @@ import { Component } from '@angular/core';
       #searchForm {
         margin-right: 100px;
       }
+      li > a.active {
+        color: #f97924;
+      }
       @media (max-width: 1200px) {
         #searchForm {
           display: none;
