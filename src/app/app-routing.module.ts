@@ -6,6 +6,7 @@ import { EventDetailComponent } from './events/event-detail/event-detail.compone
 import { EventCreateComponent } from './events/event-create/event-create.component';
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 
+import { EventsListResolverService } from './events/events-list-resolver.service';
 import { EventRouteActivatorGuard } from './events/event-detail/event-route-activator.guard';
 
 const routes: Routes = [
@@ -14,7 +15,11 @@ const routes: Routes = [
     component: EventCreateComponent,
     canDeactivate: ['canDeactivateCreateEvent']
   },
-  { path: 'events', component: EventsListComponent },
+  {
+    path: 'events',
+    component: EventsListComponent,
+    resolve: { events: EventsListResolverService }
+  },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorGuard] },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },

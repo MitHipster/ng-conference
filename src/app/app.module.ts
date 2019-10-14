@@ -15,6 +15,7 @@ import { EventService } from './events/shared/event.service';
 import { ToastrService } from './common/toastr.service';
 
 import { EventRouteActivatorGuard } from './events/event-detail/event-route-activator.guard';
+import { EventsListResolverService } from './events/events-list-resolver.service';
 
 @NgModule({
   imports: [BrowserModule, AppRoutingModule],
@@ -32,6 +33,7 @@ import { EventRouteActivatorGuard } from './events/event-detail/event-route-acti
     EventService,
     ToastrService,
     EventRouteActivatorGuard,
+    EventsListResolverService,
     // The first parameter passed into canDeactivateCreateEvent is the component itself
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
   ],

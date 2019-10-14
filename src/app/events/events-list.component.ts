@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from './shared/event.service';
+import { ActivatedRoute } from '@angular/router';
+
 import { ToastrService } from '../common/toastr.service';
 
 @Component({
@@ -7,12 +8,16 @@ import { ToastrService } from '../common/toastr.service';
   templateUrl: './events-list.component.html'
 })
 export class EventsListComponent implements OnInit {
-  events: any[];
+  events: any;
 
-  constructor(private eventService: EventService, private toastrService: ToastrService) {}
+  constructor(private toastrService: ToastrService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.events = this.eventService.getEvents();
+    // No longer need as this functionality has been moved to a resolver
+    // this.eventService.getEvents().subscribe(events => (this.events = events));
+
+    // Events are now received as an object off the URL
+    this.events = this.route.snapshot.data['events'];
   }
 
   handleThumbnailCLick(eventName) {
