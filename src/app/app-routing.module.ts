@@ -21,6 +21,7 @@ const routes: Routes = [
     resolve: { events: EventsListResolverService }
   },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorGuard] },
+  { path: 'user', loadChildren: './user/user.module#UserModule' },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   { path: '**', redirectTo: '/events' }

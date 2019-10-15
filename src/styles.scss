@@ -32,3 +32,6 @@ button {
 .toast-warning {
   background-color: #f89406;
 }
+.btn + .btn {
+  margin-left: 8px;
+}

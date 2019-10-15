@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'event-create',
-  templateUrl: './event-create.component.html',
-  styleUrls: ['./event-create.component.scss']
+  templateUrl: './event-create.component.html'
 })
 export class EventCreateComponent implements OnInit {
   isDirty: boolean = true;
