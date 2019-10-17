@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { EventsListComponent } from './events/events-list.component';
-import { EventDetailComponent } from './events/event-detail/event-detail.component';
-import { EventCreateComponent } from './events/event-create/event-create.component';
-import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
+import {
+  EventsListComponent,
+  EventsListResolverService,
+  EventDetailComponent,
+  EventRouteActivatorGuard,
+  EventCreateComponent
+} from './events/index';
 
-import { EventsListResolverService } from './events/events-list-resolver.service';
-import { EventRouteActivatorGuard } from './events/event-detail/event-route-activator.guard';
+import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
