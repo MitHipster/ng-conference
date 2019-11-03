@@ -4,11 +4,22 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
+  styles: [
+    `
+      em {
+        float: right;
+        color: #e05c65;
+        font-size: 12px;
+        padding-left: 10px;
+      }
+    `
+  ]
 })
 export class LoginComponent implements OnInit {
   userName: string;
   password: string;
+  mouseoverLogin: boolean;
 
   constructor(private authService: AuthService, private router: Router) {}
 
