@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.co
 
 import { EventService } from './events/shared/event.service';
 import { ToastrService } from './common/toastr.service';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   imports: [BrowserModule, AppRoutingModule],
@@ -36,6 +37,7 @@ import { ToastrService } from './common/toastr.service';
     ToastrService,
     EventRouteActivatorGuard,
     EventsListResolverService,
+    AuthService,
     // The first parameter passed into canDeactivateCreateEvent is the component itself
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
   ],
