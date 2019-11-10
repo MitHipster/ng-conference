@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ISession } from '../shared/event.model';
+import { restrictedWords } from '../shared/restricted-words.validator';
 
 @Component({
   templateUrl: 'session-create.component.html',
@@ -32,14 +34,20 @@ export class SessionCreateComponent implements OnInit {
   level: FormControl;
   abstract: FormControl;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.name = new FormControl('', Validators.required);
     this.presenter = new FormControl('', Validators.required);
     this.duration = new FormControl('', Validators.required);
     this.level = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [Validators.required, Validators.maxLength(400)]);
+    this.abstract = new FormControl('', [
+      Validators.required,
+      Validators.maxLength(400),
+      // Simple validator example
+      // this.restrictedWords
+      restrictedWords(['foo', 'bar'])
+    ]);
 
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -49,6 +57,12 @@ export class SessionCreateComponent implements OnInit {
       abstract: this.abstract
     });
   }
+
+  // Simple validator example
+  // private restrictedWords(control: FormControl): { [key: string]: any } {
+  //   console.log(control);
+  //   return control.value.includes('foo') ? { restrictedWords: 'foo' } : null;
+  // }
 
   saveSession(formValues): void {
     let session: ISession = {
@@ -62,5 +76,9 @@ export class SessionCreateComponent implements OnInit {
     this.newSessionForm.reset();
     this.duration.setValue('');
     this.level.setValue('');
+  }
+
+  cancel(): void {
+    this.router.navigate(['/events']);
   }
 }
