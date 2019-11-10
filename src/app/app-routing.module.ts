@@ -6,7 +6,8 @@ import {
   EventsListResolverService,
   EventDetailComponent,
   EventRouteActivatorGuard,
-  EventCreateComponent
+  EventCreateComponent,
+  SessionCreateComponent
 } from './events/index';
 
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
     resolve: { events: EventsListResolverService }
   },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorGuard] },
+  { path: 'events/session/new', component: SessionCreateComponent },
   { path: 'user', loadChildren: './user/user.module#UserModule' },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
