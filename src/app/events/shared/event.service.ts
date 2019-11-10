@@ -21,6 +21,11 @@ export class EventService {
   getEvent(id: number): IEvent {
     return EVENTS.find(event => event.id === id);
   }
+
+  saveEvent(event: IEvent): void {
+    event.id = 9999; // FIXME: make dynamic
+    EVENTS.push(event);
+  }
 }
 
 const EVENTS: IEvent[] = [
