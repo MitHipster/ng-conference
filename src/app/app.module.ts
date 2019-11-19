@@ -10,7 +10,8 @@ import {
   EventDetailComponent,
   EventRouteActivatorGuard,
   EventCreateComponent,
-  SessionCreateComponent
+  SessionCreateComponent,
+  SessionListComponent
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -31,6 +32,7 @@ import { AuthService } from './user/auth.service';
     EventDetailComponent,
     EventCreateComponent,
     SessionCreateComponent,
+    SessionListComponent,
     PageNotFoundComponent
   ],
   providers: [
