@@ -26,6 +26,11 @@ export class EventService {
     event.id = 9999; // FIXME: make dynamic
     EVENTS.push(event);
   }
+
+  updateEvent(event: IEvent): void {
+    let index = EVENTS.findIndex(e => e.id === event.id);
+    EVENTS[index] = event;
+  }
 }
 
 const EVENTS: IEvent[] = [

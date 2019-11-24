@@ -7,3 +7,19 @@
   height: 100px;
   background-color: whitesmoke;
 }
+
+.add-session {
+  margin-bottom: 16px;
+
+  a {
+    cursor: pointer;
+  }
+
+  &__header {
+    margin: 0;
+  }
+
+  &__link {
+    text-align: right;
+  }
+}
