@@ -1,9 +1,5 @@
 {
-  "cSpell.words": [
-    "hoverwell",
-    "pointable",
-    "toastr"
-  ],
+  "cSpell.words": ["hoverwell", "pointable", "toastr"],
   "workbench.colorCustomizations": {
     "activityBar.background": "#d04649",
     "activityBar.activeBorder": "#37cb34",
