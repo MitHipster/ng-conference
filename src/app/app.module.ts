@@ -16,6 +16,7 @@ import {
 
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
+import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 
 import { EventService } from './events/shared/event.service';
@@ -33,6 +34,7 @@ import { AuthService } from './user/auth.service';
     EventCreateComponent,
     SessionCreateComponent,
     SessionListComponent,
+    CollapsibleWellComponent,
     PageNotFoundComponent
   ],
   providers: [
