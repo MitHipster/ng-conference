@@ -4,7 +4,8 @@ import { ISession } from '../shared/index';
 
 @Component({
   selector: 'session-list',
-  templateUrl: 'session-list.component.html'
+  templateUrl: 'session-list.component.html',
+  styles: ['i { color: red; }']
 })
 export class SessionListComponent implements OnInit {
   @Input() sessions: ISession;
