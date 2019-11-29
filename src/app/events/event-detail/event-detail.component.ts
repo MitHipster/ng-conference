@@ -12,6 +12,8 @@ import { IEvent, ISession } from '../shared/index';
 export class EventDetailComponent implements OnInit {
   event: IEvent;
   addMode: boolean;
+  sortBy: string = 'name';
+  filterByLevel: string = 'all';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
@@ -28,7 +30,7 @@ export class EventDetailComponent implements OnInit {
     // Derive new ID by getting current max ID and incrementing by one
     const nextId = Math.max.apply(
       null,
-      this.event.sessions.map(session => session.id)
+      this.event.sessions.map(s => s.id)
     );
 
     session.id = nextId + 1;
