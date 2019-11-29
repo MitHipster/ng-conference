@@ -11,7 +11,8 @@ import {
   EventRouteActivatorGuard,
   EventCreateComponent,
   SessionCreateComponent,
-  SessionListComponent
+  SessionListComponent,
+  DurationPipe
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -35,7 +36,8 @@ import { AuthService } from './user/auth.service';
     SessionCreateComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DurationPipe
   ],
   providers: [
     // EventService is shorthand for { provide: EventService, useValue: EventService }
