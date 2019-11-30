@@ -21,8 +21,11 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 
 import { EventService } from './events/shared/event.service';
-import { ToastrService } from './common/toastr.service';
+import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { AuthService } from './user/auth.service';
+
+// Declares global toastr object
+declare let toastr: Toastr;
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
@@ -42,12 +45,12 @@ import { AuthService } from './user/auth.service';
   providers: [
     // EventService is shorthand for { provide: EventService, useValue: EventService }
     EventService,
-    ToastrService,
     EventRouteActivatorGuard,
     EventsListResolverService,
     AuthService,
     // The first parameter passed into canDeactivateCreateEvent is the component itself
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    { provide: TOASTR_TOKEN, useValue: toastr }
   ],
   bootstrap: [EventsAppComponent]
 })
