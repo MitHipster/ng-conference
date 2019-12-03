@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorGuard] },
   { path: 'events/session/new', component: SessionCreateComponent },
-  { path: 'user', loadChildren: './user/user.module#UserModule' },
+  { path: 'user', loadChildren: () => import('./user/user.module').then(mod => mod.UserModule) },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   { path: '**', redirectTo: '/events' }
