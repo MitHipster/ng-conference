@@ -17,15 +17,22 @@ import {
 
 import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 
+import {
+  CollapsibleWellComponent,
+  SimpleModalComponent,
+  Toastr,
+  TOASTR_TOKEN,
+  JQ_TOKEN
+} from './common/index';
+
 import { EventService } from './events/shared/event.service';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
 import { AuthService } from './user/auth.service';
 
-// Declares global toastr object
-declare let toastr: Toastr;
+// Declares global object
+const toastr: Toastr = window['toastr'];
+const jquery = window['$'];
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
@@ -39,6 +46,7 @@ declare let toastr: Toastr;
     SessionCreateComponent,
     SessionListComponent,
     CollapsibleWellComponent,
+    SimpleModalComponent,
     PageNotFoundComponent,
     DurationPipe
   ],
@@ -50,7 +58,8 @@ declare let toastr: Toastr;
     AuthService,
     // The first parameter passed into canDeactivateCreateEvent is the component itself
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
-    { provide: TOASTR_TOKEN, useValue: toastr }
+    { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jquery }
   ],
   bootstrap: [EventsAppComponent]
 })

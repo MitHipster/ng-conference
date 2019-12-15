@@ -3,6 +3,7 @@
     "glyphicon",
     "hoverwell",
     "pointable",
+    "tabindex",
     "toastr"
   ],
   "workbench.colorCustomizations": {
