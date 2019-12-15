@@ -21,10 +21,11 @@ import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.co
 
 import {
   CollapsibleWellComponent,
-  SimpleModalComponent,
   Toastr,
   TOASTR_TOKEN,
-  JQ_TOKEN
+  JQ_TOKEN,
+  SimpleModalComponent,
+  ModalTriggerDirective
 } from './common/index';
 
 import { EventService } from './events/shared/event.service';
@@ -48,6 +49,7 @@ const jquery = window['$'];
     CollapsibleWellComponent,
     SimpleModalComponent,
     PageNotFoundComponent,
+    ModalTriggerDirective,
     DurationPipe
   ],
   providers: [

@@ -10,7 +10,9 @@ export class EventRouteActivatorGuard implements CanActivate {
     // Plus sign before route.params casts value to a number
     const eventExists = !!this.eventService.getEvent(+route.params['id']);
 
-    if (!eventExists) this.router.navigate(['page-not-found']);
+    if (!eventExists) {
+      this.router.navigate(['page-not-found']);
+    }
 
     return eventExists;
   }

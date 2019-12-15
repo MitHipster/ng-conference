@@ -13,18 +13,18 @@ import {
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 
 const routes: Routes = [
+  { path: 'events/session/new', component: SessionCreateComponent },
   {
     path: 'events/new',
     component: EventCreateComponent,
     canDeactivate: ['canDeactivateCreateEvent']
   },
+  { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorGuard] },
   {
     path: 'events',
     component: EventsListComponent,
     resolve: { events: EventsListResolverService }
   },
-  { path: 'events/:id', component: EventDetailComponent, canActivate: [EventRouteActivatorGuard] },
-  { path: 'events/session/new', component: SessionCreateComponent },
   { path: 'user', loadChildren: () => import('./user/user.module').then(mod => mod.UserModule) },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
