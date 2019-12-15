@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
-import { IEvent } from './event.model';
+import { IEvent, ISession } from './event.model';
 
 @Injectable()
 export class EventService {
   constructor() {}
 
   getEvents(): Observable<IEvent[]> {
-    let subject = new Subject<IEvent[]>();
+    const subject = new Subject<IEvent[]>();
 
     setTimeout(() => {
       subject.next(EVENTS);
@@ -28,8 +28,42 @@ export class EventService {
   }
 
   updateEvent(event: IEvent): void {
-    let index = EVENTS.findIndex(e => e.id === event.id);
+    const index = EVENTS.findIndex(e => e.id === event.id);
     EVENTS[index] = event;
+  }
+
+  searchSessions(searchTerm: string) {
+    const term = searchTerm.toLowerCase();
+    let results: ISession[] = [];
+
+    // Loop through each event
+    EVENTS.forEach(event => {
+      // Find session(s) that contain the typed search term
+      let matchingSessions = event.sessions.filter(
+        (session: ISession) => session.name.toLowerCase().indexOf(term) > -1
+      );
+
+      // Map over each matching session and add event id to link to parent event
+      // Any type is used instead of ISession because a new field is being added
+      matchingSessions = matchingSessions.map((session: any) => {
+        session.eventId = event.id;
+        return session;
+      });
+
+      results = [...results, ...matchingSessions];
+    });
+
+    // Will return an event emitter for attaching a subscription.
+    // The true parameter tells EventEmitter to deliver events asynchronously
+    const emitter = new EventEmitter(true);
+
+    // Simulate an asynchronous call
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 200);
+
+    // Not sure how this works with the setTimeout above
+    return emitter;
   }
 }
 
