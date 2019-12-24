@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { EventService } from '../shared/event.service';
 import { IEvent, ISession } from '../shared/index';
@@ -18,8 +18,17 @@ export class EventDetailComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    // We cannot use snapshot here because we need an observable to update component
+    // when conducting a search since we are not moving between components
+    // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+
     // Plus sign before this.route casts value to a number
-    this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
+    this.route.params.forEach((params: Params) => {
+      this.event = this.eventService.getEvent(+params['id']);
+
+      // Reset add mode in case it's enabled during search
+      this.addMode = false;
+    });
   }
 
   addSession(): void {
