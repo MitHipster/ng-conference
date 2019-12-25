@@ -28,7 +28,7 @@ export class NavBarComponent {
   searchTerm: string = '';
   foundSessions: ISession[];
 
-  constructor(private authService: AuthService, private eventService: EventService) {}
+  constructor(public authService: AuthService, private eventService: EventService) {}
 
   searchSessions(searchTerm: string) {
     this.eventService.searchSessions(searchTerm).subscribe((sessions: ISession[]) => {
