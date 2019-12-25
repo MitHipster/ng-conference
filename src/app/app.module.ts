@@ -12,6 +12,8 @@ import {
   EventCreateComponent,
   SessionCreateComponent,
   SessionListComponent,
+  UpvoteComponent,
+  VoterService,
   DurationPipe
 } from './events/index';
 
@@ -46,6 +48,7 @@ const jquery = window['$'];
     EventCreateComponent,
     SessionCreateComponent,
     SessionListComponent,
+    UpvoteComponent,
     CollapsibleWellComponent,
     SimpleModalComponent,
     PageNotFoundComponent,
@@ -57,6 +60,7 @@ const jquery = window['$'];
     EventService,
     EventRouteActivatorGuard,
     EventsListResolverService,
+    VoterService,
     AuthService,
     // The first parameter passed into canDeactivateCreateEvent is the component itself
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },

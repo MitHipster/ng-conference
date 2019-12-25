@@ -4,7 +4,8 @@
     "hoverwell",
     "pointable",
     "tabindex",
-    "toastr"
+    "toastr",
+    "upvote"
   ],
   "workbench.colorCustomizations": {
     "activityBar.background": "#d04649",
