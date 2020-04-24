@@ -13,6 +13,7 @@ import {
   SessionCreateComponent,
   SessionListComponent,
   UpvoteComponent,
+  ValidateLocationDirective,
   VoterService,
   DurationPipe
 } from './events/index';
@@ -52,6 +53,7 @@ const jquery = window['$'];
     CollapsibleWellComponent,
     SimpleModalComponent,
     PageNotFoundComponent,
+    ValidateLocationDirective,
     ModalTriggerDirective,
     DurationPipe
   ],
