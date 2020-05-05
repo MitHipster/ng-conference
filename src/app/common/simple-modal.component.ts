@@ -34,7 +34,7 @@ export class SimpleModalComponent implements OnInit {
   @Input() title: string;
   @Input() elementId: string;
   @Input() closeOnClick: string;
-  @ViewChild('modalContainer') modalContainer: ElementRef;
+  @ViewChild('modalContainer', { static: true }) modalContainer: ElementRef;
 
   constructor(@Inject(JQ_TOKEN) private $: any) {}
 
