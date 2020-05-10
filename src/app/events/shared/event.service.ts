@@ -9,21 +9,16 @@ import { IEvent, ISession } from './event.model';
 export class EventService {
   constructor(private http: HttpClient) {}
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    };
-  }
-
   getEvents(): Observable<IEvent[]> {
     return this.http
       .get<IEvent[]>('/api/events')
       .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
   }
 
-  getEvent(id: number): IEvent {
-    return EVENTS.find(event => event.id === id);
+  getEvent(id: number): Observable<IEvent> {
+    return this.http
+      .get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvents')));
   }
 
   saveEvent(event: IEvent): void {
@@ -68,6 +63,13 @@ export class EventService {
 
     // Not sure how this works with the setTimeout above
     return emitter;
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }
 

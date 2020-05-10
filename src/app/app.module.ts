@@ -5,11 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import {
+  EventsResolverService,
   EventsListComponent,
   EventsListResolverService,
   EventThumbnailComponent,
   EventDetailComponent,
-  EventRouteActivatorGuard,
   EventCreateComponent,
   SessionCreateComponent,
   SessionListComponent,
@@ -61,7 +61,7 @@ const jquery = window['$'];
   providers: [
     // EventService is shorthand for { provide: EventService, useValue: EventService }
     EventService,
-    EventRouteActivatorGuard,
+    EventsResolverService,
     EventsListResolverService,
     VoterService,
     AuthService,
