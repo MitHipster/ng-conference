@@ -11,6 +11,7 @@ import { VoterService } from './voter.service';
   styles: ['i { color: red; }']
 })
 export class SessionListComponent implements OnChanges {
+  @Input() eventId: number;
   @Input() sortBy: string;
   @Input() filterByLevel: string;
   @Input() sessions: ISession[];
@@ -27,9 +28,9 @@ export class SessionListComponent implements OnChanges {
 
   toggleVote(session: ISession) {
     if (this.userHasVoted(session)) {
-      this.voterService.deleteVoter(session, this.authService.currentUser.userName);
+      this.voterService.deleteVoter(this.eventId, session, this.authService.currentUser.userName);
     } else {
-      this.voterService.addVoter(session, this.authService.currentUser.userName);
+      this.voterService.addVoter(this.eventId, session, this.authService.currentUser.userName);
     }
 
     // Resort sessions if sort by votes is selected
