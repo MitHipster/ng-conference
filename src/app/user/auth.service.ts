@@ -57,4 +57,12 @@ export class AuthService {
 
     return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options);
   }
+
+  logout(): Observable<Object> {
+    this.currentUser = undefined;
+
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
+    return this.http.post('/api/logout', {}, options);
+  }
 }
