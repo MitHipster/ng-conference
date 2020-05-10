@@ -20,14 +20,23 @@ export class LoginComponent implements OnInit {
   userName: string;
   password: string;
   mouseoverLogin: boolean;
+  loginInvalid: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
 
+  // Simulated logging in user passport. Passwords are not validated and username should be 'johnpapa'.
   login(formValues): void {
-    this.authService.loginUser(formValues.userName, formValues.password);
-    this.router.navigate(['events']);
+    this.authService
+      .loginUser(formValues.userName, formValues.password)
+      .subscribe((resp: Object | boolean) => {
+        if (!resp) {
+          this.loginInvalid = true;
+        } else {
+          this.router.navigate(['events']);
+        }
+      });
   }
 
   cancel(): void {

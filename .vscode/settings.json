@@ -1,5 +1,13 @@
 {
-  "cSpell.words": ["glyphicon", "hoverwell", "pointable", "tabindex", "toastr", "upvote"],
+  "cSpell.words": [
+    "glyphicon",
+    "hoverwell",
+    "johnpapa",
+    "pointable",
+    "tabindex",
+    "toastr",
+    "upvote"
+  ],
   "workbench.colorCustomizations": {
     "activityBar.background": "#d04649",
     "activityBar.activeBackground": "#d04649",
