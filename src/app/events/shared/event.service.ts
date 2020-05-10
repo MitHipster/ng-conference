@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -18,17 +18,17 @@ export class EventService {
   getEvent(id: number): Observable<IEvent> {
     return this.http
       .get<IEvent>('/api/events/' + id)
-      .pipe(catchError(this.handleError<IEvent>('getEvents')));
+      .pipe(catchError(this.handleError<IEvent>('getEvent')));
   }
 
-  saveEvent(event: IEvent): void {
-    event.id = 9999; // FIXME: make dynamic
-    EVENTS.push(event);
-  }
+  // Will handle both saving new and updating existing events based on whether an id is present
+  // This is just a feature of the way the server was configured
+  saveEvent(event: IEvent): Observable<IEvent> {
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
-  updateEvent(event: IEvent): void {
-    const index = EVENTS.findIndex(e => e.id === event.id);
-    EVENTS[index] = event;
+    return this.http
+      .post<IEvent>('/api/events', event, options)
+      .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
 
   searchSessions(searchTerm: string) {

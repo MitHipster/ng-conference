@@ -40,7 +40,7 @@ export class EventDetailComponent implements OnInit {
     session.id = nextId + 1;
     this.event.sessions.push(session);
     // Update event with latest session information
-    this.eventService.updateEvent(this.event);
+    this.eventService.saveEvent(this.event).subscribe();
     this.addMode = false;
   }
 

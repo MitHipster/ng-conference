@@ -33,14 +33,10 @@ export class EventCreateComponent implements OnInit {
   ngOnInit() {}
 
   saveEvent(formValues): void {
-    let event: IEvent = {
-      ...formValues,
-      id: undefined,
-      sessions: []
-    };
-    this.eventService.saveEvent(formValues);
-    this.isDirty = false;
-    this.router.navigate(['/events']);
+    this.eventService.saveEvent(formValues).subscribe(() => {
+      this.isDirty = false;
+      this.router.navigate(['/events']);
+    });
   }
 
   cancel(): void {
