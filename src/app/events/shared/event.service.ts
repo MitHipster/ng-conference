@@ -31,38 +31,10 @@ export class EventService {
       .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
 
-  searchSessions(searchTerm: string) {
-    const term = searchTerm.toLowerCase();
-    let results: ISession[] = [];
-
-    // Loop through each event
-    EVENTS.forEach(event => {
-      // Find session(s) that contain the typed search term
-      let matchingSessions = event.sessions.filter(
-        (session: ISession) => session.name.toLowerCase().indexOf(term) > -1
-      );
-
-      // Map over each matching session and add event id to link to parent event
-      // Any type is used instead of ISession because a new field is being added
-      matchingSessions = matchingSessions.map((session: any) => {
-        session.eventId = event.id;
-        return session;
-      });
-
-      results = [...results, ...matchingSessions];
-    });
-
-    // Will return an event emitter for attaching a subscription.
-    // The true parameter tells EventEmitter to deliver events asynchronously
-    const emitter = new EventEmitter(true);
-
-    // Simulate an asynchronous call
-    setTimeout(() => {
-      emitter.emit(results);
-    }, 200);
-
-    // Not sure how this works with the setTimeout above
-    return emitter;
+  searchSessions(searchTerm: string): Observable<ISession[]> {
+    return this.http
+      .get<ISession[]>('/api/sessions/search?search=' + searchTerm)
+      .pipe(catchError(this.handleError<ISession[]>('searchSessions')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
